@@ -1,0 +1,282 @@
+[
+  {
+    "key": "1",
+    "parent": null,
+    "title": "Phase 1 — Business scope and source contract",
+    "body": "## Objective\nComplete business scope and source contract for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 1.1 — Define the manufacturing energy use case\n- [ ] 1.2 — Record source provenance and profile the dataset\n- [ ] 1.3 — Approve architecture and delivery contract\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nStart after project scope review.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "1.1",
+    "parent": "1",
+    "title": "1.1 — Define the manufacturing energy use case",
+    "body": "## Objective\nAgree on the decisions the dashboard will support.\n\n## Acceptance criteria\n- [ ] Define audience: plant energy analyst and operations manager.\n- [ ] Define total kWh, daily/monthly trends, load-type share, and highest-consumption intervals.\n- [ ] Exclude OEE, downtime, yield, energy per manufactured unit, and actual cost savings because source inputs are absent.\n\n## Required evidence\ndocs/business-case.md and reviewed KPI dictionary.\n\n## Dependencies\nNone; first implementation issue.\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Ready"
+  },
+  {
+    "key": "1.2",
+    "parent": "1",
+    "title": "1.2 — Record source provenance and profile the dataset",
+    "body": "## Objective\nEstablish a reproducible real-data baseline.\n\n## Acceptance criteria\n- [ ] Download the original UCI dataset and record URL, attribution, retrieval date, and SHA-256.\n- [ ] Profile actual rows, columns, date range, cadence, duplicate timestamps, missing values, and categories.\n- [ ] Resolve timestamp parsing and interval-boundary semantics; document timezone assumptions and ambiguous CO2 units.\n\n## Required evidence\nSource manifest, profiling output, data dictionary, and cited limitations.\n\n## Dependencies\n1.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "1.3",
+    "parent": "1",
+    "title": "1.3 — Approve architecture and delivery contract",
+    "body": "## Objective\nFreeze the MVP and the boundaries between tools.\n\n## Acceptance criteria\n- [ ] Document source → landing → RAW → dbt marts → Streamlit flow.\n- [ ] Define owners: Schemachange for ingestion/control objects, dbt for models, app deployment for Streamlit, Terraform for selected infrastructure.\n- [ ] Confirm Snowflake account availability, explicit warehouse runtime support, cost controls, dashboard acceptance criteria, and issue dependencies.\n\n## Required evidence\nArchitecture diagram, ownership matrix, and scope decision.\n\n## Dependencies\n1.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "2",
+    "parent": null,
+    "title": "Phase 2 — Repository and GitHub CI foundation",
+    "body": "## Objective\nComplete repository and github ci foundation for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 2.1 — Bootstrap a reproducible repository\n- [ ] 2.2 — Implement useful offline checks\n- [ ] 2.3 — Protect main and establish evidence tracking\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 1; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "2.1",
+    "parent": "2",
+    "title": "2.1 — Bootstrap a reproducible repository",
+    "body": "## Objective\nMake a fresh checkout usable on macOS.\n\n## Acceptance criteria\n- [ ] Create README, Python environment instructions, dependency versions, .gitignore, and configuration examples without secrets.\n- [ ] Create src, tests, migrations, dbt, app, docs, and evidence directories.\n- [ ] Add source attribution and distinguish data license from project code license.\n\n## Required evidence\nSetup PR and clean-environment verification.\n\n## Dependencies\nPhase 1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "2.2",
+    "parent": "2",
+    "title": "2.2 — Implement useful offline checks",
+    "body": "## Objective\nDetect code and data-contract defects before deployment.\n\n## Acceptance criteria\n- [ ] Create unit tests for timestamp parsing, file identity, duplicate handling, and invalid rows.\n- [ ] Run Ruff, pytest, and SQLFluff over maintained SQL directories in PR CI.\n- [ ] Use correct templating for migration SQL; introduce dbt templating when dbt models exist.\n\n## Required evidence\nPassing CI plus a deliberate failing test and corrective PR.\n\n## Dependencies\n2.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "2.3",
+    "parent": "2",
+    "title": "2.3 — Protect main and establish evidence tracking",
+    "body": "## Objective\nRequire reviewed changes and record learning.\n\n## Acceptance criteria\n- [ ] Configure required checks and PR-only changes under the account capabilities.\n- [ ] Demonstrate failed checks blocking merge.\n- [ ] Link issues, PRs, run attempts, commit SHA, results, and limitations in the Project.\n\n## Required evidence\nRuleset evidence and passing/failing PR links.\n\n## Dependencies\n2.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "3",
+    "parent": null,
+    "title": "Phase 3 — Snowflake environments and access",
+    "body": "## Objective\nComplete snowflake environments and access for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 3.1 — Bootstrap isolated environments\n- [ ] 3.2 — Configure roles and service access\n- [ ] 3.3 — Verify connections and restrictions\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 2; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "3.1",
+    "parent": "3",
+    "title": "3.1 — Bootstrap isolated environments",
+    "body": "## Objective\nKeep lab development separate from the promoted release.\n\n## Acceptance criteria\n- [ ] Create MFG_DEV, MFG_TEST, MFG_PROD with RAW, STAGING, MARTS, OPS, and BI schemas.\n- [ ] Configure a small warehouse, auto-suspend, and supported usage monitoring.\n- [ ] Record bootstrap objects and future Terraform ownership; do not reuse or replace old demo objects.\n\n## Required evidence\nEnvironment inventory and bootstrap SQL.\n\n## Dependencies\nPhase 2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "3.2",
+    "parent": "3",
+    "title": "3.2 — Configure roles and service access",
+    "body": "## Objective\nGive each task the privileges it needs.\n\n## Acceptance criteria\n- [ ] Define deployment, ingestion, transformation, and dashboard access boundaries.\n- [ ] Configure GitHub environments and credentials without committing secrets.\n- [ ] Document shared identities versus role isolation and required Streamlit owner privileges.\n\n## Required evidence\nRole matrix and environment-variable names.\n\n## Dependencies\n3.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "3.3",
+    "parent": "3",
+    "title": "3.3 — Verify connections and restrictions",
+    "body": "## Objective\nProve configuration selects the intended target.\n\n## Acceptance criteria\n- [ ] Verify role, database, schema, and warehouse in all environments.\n- [ ] Test a denied cross-environment operation using the intended role context.\n- [ ] Confirm supported authentication for the available account and tools.\n\n## Required evidence\nPositive/negative access results and workflow logs.\n\n## Dependencies\n3.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "4",
+    "parent": null,
+    "title": "Phase 4 — Schemachange and reliable source loading",
+    "body": "## Objective\nComplete schemachange and reliable source loading for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 4.1 — Version ingestion and audit objects\n- [ ] 4.2 — Implement validated batch ingestion\n- [ ] 4.3 — Verify replay and duplicate handling\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 3; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "4.1",
+    "parent": "4",
+    "title": "4.1 — Version ingestion and audit objects",
+    "body": "## Objective\nMake the raw-layer setup repeatable.\n\n## Acceptance criteria\n- [ ] Create migrations for raw records, load manifest, rejected rows, and deployment history.\n- [ ] Define raw record identity as file checksum plus source row number; establish canonical interval key after profiling.\n- [ ] Run a V migration and verify history; keep deployed V files unchanged.\n\n## Required evidence\nMigration PR, object definitions, and history export.\n\n## Dependencies\nPhase 3\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "4.2",
+    "parent": "4",
+    "title": "4.2 — Implement validated batch ingestion",
+    "body": "## Objective\nLoad source records with traceability.\n\n## Acceptance criteria\n- [ ] Preserve original file and raw values; attach filename, checksum, row number, and ingestion timestamp.\n- [ ] Validate required columns and parse rules; quarantine invalid records with reasons.\n- [ ] Record batch status and counts; reconcile source = accepted + rejected under the defined duplicate policy.\n\n## Required evidence\nSuccessful DEV load and reconciliation report.\n\n## Dependencies\n4.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "4.3",
+    "parent": "4",
+    "title": "4.3 — Verify replay and duplicate handling",
+    "body": "## Objective\nMake retrying a file safe.\n\n## Acceptance criteria\n- [ ] Load the same file twice and prove no duplicate canonical records.\n- [ ] Test malformed input and an interrupted/failed batch then recover.\n- [ ] Split historical data into chronological files for a clearly labeled batch-arrival simulation; never describe it as a live feed.\n\n## Required evidence\nDuplicate/failure test output and ingestion runbook.\n\n## Dependencies\n4.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "5",
+    "parent": null,
+    "title": "Phase 5 — dbt analytical models and quality",
+    "body": "## Objective\nComplete dbt analytical models and quality for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 5.1 — Initialize dbt and staging models\n- [ ] 5.2 — Build energy dimensions and facts\n- [ ] 5.3 — Add meaningful tests and documentation\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 4; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "5.1",
+    "parent": "5",
+    "title": "5.1 — Initialize dbt and staging models",
+    "body": "## Objective\nConvert raw values into typed, documented fields.\n\n## Acceptance criteria\n- [ ] Configure dbt Core with compatible Snowflake adapter and external credentials.\n- [ ] Declare sources and create staging models with explicit timestamp and numeric conversions.\n- [ ] Retain lineage back to source file and row; reject or flag ambiguous mappings.\n\n## Required evidence\ndbt compile/build output and staging reconciliation.\n\n## Dependencies\nPhase 4\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "5.2",
+    "parent": "5",
+    "title": "5.2 — Build energy dimensions and facts",
+    "body": "## Objective\nProvide consistent analytical grain for the dashboard.\n\n## Acceptance criteria\n- [ ] Create dim_date, dim_time, dim_load_type, and fct_energy_interval.\n- [ ] Create daily/monthly aggregates with documented date boundaries and complete-period handling.\n- [ ] Use SUM for interval kWh; label maximum interval kWh separately from instantaneous peak power; do not sum power-factor percentages.\n\n## Required evidence\nModel SQL, grain/key documentation, and reconciled totals.\n\n## Dependencies\n5.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "5.3",
+    "parent": "5",
+    "title": "5.3 — Add meaningful tests and documentation",
+    "body": "## Objective\nDetect errors that would mislead dashboard readers.\n\n## Acceptance criteria\n- [ ] Test keys, relationships, accepted load types, nonnegative consumption, timestamp gaps, and source-to-mart totals.\n- [ ] Create a controlled bad-data fixture and verify a failing test.\n- [ ] Generate dbt documentation and record baseline row counts and KPI results.\n\n## Required evidence\nPassing/failing dbt results, lineage, and baseline metrics.\n\n## Dependencies\n5.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "6",
+    "parent": null,
+    "title": "Phase 6 — DEV → TEST → PROD release pipeline",
+    "body": "## Objective\nComplete dev → test → prod release pipeline for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 6.1 — Implement dependent deployment stages\n- [ ] 6.2 — Add PROD approval and deployment serialization\n- [ ] 6.3 — Verify release consistency and recovery\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 5; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "6.1",
+    "parent": "6",
+    "title": "6.1 — Implement dependent deployment stages",
+    "body": "## Objective\nPromote one selected code revision.\n\n## Acceptance criteria\n- [ ] Run migrations, controlled data load, dbt build, and validation in DEV then TEST.\n- [ ] Use needs dependencies and environment-specific settings/history.\n- [ ] Record commit SHA and source manifest version; block downstream work on failures.\n\n## Required evidence\nRelease workflow PR and successful DEV/TEST run.\n\n## Dependencies\nPhase 5\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "6.2",
+    "parent": "6",
+    "title": "6.2 — Add PROD approval and deployment serialization",
+    "body": "## Objective\nRequire a deliberate production-lab release.\n\n## Acceptance criteria\n- [ ] Configure available PROD approval and document solo-project limitations.\n- [ ] Use workflow concurrency shared by all relevant deployment entry points without canceling active migrations.\n- [ ] Demonstrate TEST failure blocking PROD and a clean release waiting for approval.\n\n## Required evidence\nFailed run, approval record, and successful PROD run.\n\n## Dependencies\n6.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "6.3",
+    "parent": "6",
+    "title": "6.3 — Verify release consistency and recovery",
+    "body": "## Objective\nProve a release can be traced and safely repeated.\n\n## Acceptance criteria\n- [ ] Compare code revision, source manifest, migration history, dbt results, and KPI totals across environments.\n- [ ] Rerun the same revision and verify V/R behavior and ingestion idempotency.\n- [ ] Document TEST recovery and distinguish written procedures from tested recovery.\n\n## Required evidence\nHistory exports, rerun attempts, reconciliation, and recovery notes.\n\n## Dependencies\n6.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "7",
+    "parent": null,
+    "title": "Phase 7 — Streamlit in Snowflake dashboard",
+    "body": "## Objective\nComplete streamlit in snowflake dashboard for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 7.1 — Design dashboard pages and metric contracts\n- [ ] 7.2 — Build the browser dashboard on curated marts\n- [ ] 7.3 — Validate and release the dashboard\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 6; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "7.1",
+    "parent": "7",
+    "title": "7.1 — Design dashboard pages and metric contracts",
+    "body": "## Objective\nMake the final output understandable before styling.\n\n## Acceptance criteria\n- [ ] Specify Overview, Operating Patterns, and Data Quality pages.\n- [ ] Define date and load-type filters, KPI formulas, units, and empty-state behavior.\n- [ ] Use total kWh, daily/monthly trend, hour/day heatmap, load mix, and completeness; exclude CO2 until its unit is resolved.\n\n## Required evidence\nWireframes and dashboard acceptance checklist.\n\n## Dependencies\nPhase 6\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "7.2",
+    "parent": "7",
+    "title": "7.2 — Build the browser dashboard on curated marts",
+    "body": "## Objective\nDeliver an interactive application usable from macOS.\n\n## Acceptance criteria\n- [ ] Implement Streamlit views reading marts rather than reimplementing business logic.\n- [ ] Add environment/source-period labels and distinguish ingestion time from historical measurement time.\n- [ ] Check filter behavior, readable axes, and no-data handling; explicitly select the supported runtime.\n\n## Required evidence\nApp code, Snowflake app link, screenshots, and filter checks.\n\n## Dependencies\n7.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "7.3",
+    "parent": "7",
+    "title": "7.3 — Validate and release the dashboard",
+    "body": "## Objective\nEnsure visuals agree with the underlying data.\n\n## Acceptance criteria\n- [ ] Reconcile at least five displayed results with independent SQL queries across filters.\n- [ ] Deploy the same reviewed app revision through environments and test viewer access.\n- [ ] Record final app URL, release SHA, screenshots, metric limitations, and refresh/reload instructions.\n\n## Required evidence\nDashboard acceptance results and release evidence.\n\n## Dependencies\n7.2\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "8",
+    "parent": null,
+    "title": "Phase 8 — Terraform infrastructure ownership",
+    "body": "## Objective\nComplete terraform infrastructure ownership for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 8.1 — Plan and validate resource ownership\n- [ ] 8.2 — Apply one controlled infrastructure change\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 7; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "8.1",
+    "parent": "8",
+    "title": "8.1 — Plan and validate resource ownership",
+    "body": "## Objective\nIntroduce IaC without recreating working resources.\n\n## Acceptance criteria\n- [ ] Inventory existing warehouses, schemas, roles, and grants; select a small supported Terraform scope.\n- [ ] Choose import versus exclusion and document bootstrap dependencies.\n- [ ] Configure provider versions and protected state; run format/validate and review a plan.\n\n## Required evidence\nOwnership/import plan and validation output.\n\n## Dependencies\nPhase 7\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "8.2",
+    "parent": "8",
+    "title": "8.2 — Apply one controlled infrastructure change",
+    "body": "## Objective\nDemonstrate reviewed and reproducible infrastructure delivery.\n\n## Acceptance criteria\n- [ ] Import selected resources if required and review for unexpected replacement.\n- [ ] Apply a small lab change with safe privileges and verify the result.\n- [ ] Add PR validation/plan and an approved apply path with serialized state access.\n\n## Required evidence\nReviewed plan, apply evidence, and drift/recovery notes.\n\n## Dependencies\n8.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "9",
+    "parent": null,
+    "title": "Phase 9 — AWS ingestion or labeled local simulation",
+    "body": "## Objective\nComplete aws ingestion or labeled local simulation for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 9.1 — Define landing and event contracts\n- [ ] 9.2 — Implement and test the chosen ingestion path\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 8; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "9.1",
+    "parent": "9",
+    "title": "9.1 — Define landing and event contracts",
+    "body": "## Objective\nExtend the existing file loader without changing business metrics.\n\n## Acceptance criteria\n- [ ] Map file storage, event payload, batch identity, and duplicate-event behavior.\n- [ ] Select real S3/Lambda only if account and budget allow; otherwise map local files and Python events explicitly.\n- [ ] Retain the exact source snapshot and document historical replay as simulation.\n\n## Required evidence\nIngestion contract and execution-mode decision.\n\n## Dependencies\nPhase 8\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "9.2",
+    "parent": "9",
+    "title": "9.2 — Implement and test the chosen ingestion path",
+    "body": "## Objective\nDemonstrate observable file-to-Snowflake delivery.\n\n## Acceptance criteria\n- [ ] Implement file arrival → validation → existing loader with least-required access.\n- [ ] Test duplicate events, malformed files, retry, and logs.\n- [ ] Document setup, costs/limits, and teardown; do not claim AWS deployment for a local simulation.\n\n## Required evidence\nEnd-to-end batch evidence and failure/retry records.\n\n## Dependencies\n9.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "10",
+    "parent": null,
+    "title": "Phase 10 — Authentication and operational readiness",
+    "body": "## Objective\nComplete authentication and operational readiness for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 10.1 — Harden supported service authentication\n- [ ] 10.2 — Add operational traceability and recovery\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 9; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "10.1",
+    "parent": "10",
+    "title": "10.1 — Harden supported service authentication",
+    "body": "## Objective\nReduce credential exposure using compatible mechanisms.\n\n## Acceptance criteria\n- [ ] Inventory identities, credential storage, and tool support.\n- [ ] Implement supported key-pair or federated authentication and narrower identities as feasible.\n- [ ] Verify authorized access and a denied case; retire old credentials only after validation.\n\n## Required evidence\nAuthentication matrix, redacted verification, and remaining limits.\n\n## Dependencies\nPhase 9\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "10.2",
+    "parent": "10",
+    "title": "10.2 — Add operational traceability and recovery",
+    "body": "## Objective\nMake failed releases and loads diagnosable.\n\n## Acceptance criteria\n- [ ] Record release SHA, environment, batch ID, source checksum, and run link in summaries.\n- [ ] Define actionable failure notifications and warehouse usage review.\n- [ ] Rehearse one recovery scenario and document restore/forward-fix decisions and app impact.\n\n## Required evidence\nOperational dashboard/log examples and rehearsed runbook.\n\n## Dependencies\n10.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "11",
+    "parent": null,
+    "title": "Phase 11 — Portfolio acceptance and release",
+    "body": "## Objective\nComplete portfolio acceptance and release for the manufacturing energy analytics portfolio.\n\n## Sub-issues\n- [ ] 11.1 — Verify end-to-end reproducibility\n- [ ] 11.2 — Publish the portfolio milestone\n\n## Completion gate\nAll child issues have verified acceptance criteria and attached evidence. Parent completion does not substitute for child verification.\n\n## Dependency\nPhase 10; later extension work must preserve the dashboard MVP.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "11.1",
+    "parent": "11",
+    "title": "11.1 — Verify end-to-end reproducibility",
+    "body": "## Objective\nConfirm the repo matches the delivered system.\n\n## Acceptance criteria\n- [ ] Reproduce setup and a representative source load from documented prerequisites.\n- [ ] Trace one dashboard metric back through mart, staging, raw, and source record.\n- [ ] Separate implemented, simulated, and deferred capabilities; keep unresolved work visible.\n\n## Required evidence\nReproducibility checklist and lineage walkthrough.\n\n## Dependencies\nPhase 10\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  },
+  {
+    "key": "11.2",
+    "parent": "11",
+    "title": "11.2 — Publish the portfolio milestone",
+    "body": "## Objective\nPrepare an interview-ready demonstration.\n\n## Acceptance criteria\n- [ ] Write README architecture, dataset attribution, business findings, limitations, and setup/teardown.\n- [ ] Prepare a short demo showing PR gate, release approval, ingestion retry, and dashboard.\n- [ ] Close only evidenced issues and create a release with app screenshots and artifact links.\n\n## Required evidence\nRelease notes, demo script, and final acceptance report.\n\n## Dependencies\n11.1\n\n### Evidence\n- Pull request:\n- Workflow run and attempt / commit SHA:\n- Relevant output, SQL results, screenshot, or artifact:\n- Expected versus observed result:\n\n### Learning review\n- What did I implement?\n- Why is it needed?\n- How did I verify it?\n- What failed, and how did I fix it?\n- What limitations remain?\n\n### Definition of Done\n- [ ] Acceptance criteria above are met.\n- [ ] Evidence is attached and claims match observed results.\n- [ ] Documentation and learning review are complete.\n",
+    "status": "Backlog"
+  }
+]
