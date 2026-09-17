@@ -3,9 +3,9 @@
 ## Project charter
 Build a reproducible manufacturing data platform using a real steel-industry energy dataset, with the final interactive dashboard hosted in Streamlit in Snowflake and accessible from a Mac browser.
 
-Proposed repository: `Qb1005/manufacturing-energy-analytics`
-Proposed GitHub Project: `Manufacturing Energy Analytics — Delivery Roadmap`
-Status: complete issue-content draft; GitHub creation pending authenticated access. Nothing in this plan claims an implementation has been delivered.
+Repository: [Qb1005/manufacturing-energy-analytics](https://github.com/Qb1005/manufacturing-energy-analytics)
+GitHub Project: [Manufacturing Energy Analytics — Delivery Roadmap](https://github.com/users/Qb1005/projects/2)
+Status: planning setup published: 11 parent issues and 29 linked sub-issues (40 total), all added to the Project. Pipeline and dashboard implementation have not started. Start with [issue 1.1](https://github.com/Qb1005/manufacturing-energy-analytics/issues/2).
 
 ## Dataset decision
 Recommended source: [UCI Steel Industry Energy Consumption](https://archive.ics.uci.edu/dataset/851/steel+), DOI https://doi.org/10.24432/C52G8C. UCI describes real measurements from DAEWOO Steel in South Korea, 35,040 records, and CC BY 4.0 attribution requirements. Verify the downloaded file's schema, period, timestamp conventions, and granularity in issue 1.2 rather than assuming them from secondary articles.
@@ -35,13 +35,12 @@ Use Streamlit in Snowflake with an explicitly selected supported warehouse runti
 
 ## Project board
 Statuses: Backlog → Ready → In Progress → Review → Done.
-Fields: Phase, Priority (P1/P2), Delivery (MVP/Extension), Evidence (Missing/Partial/Complete), Execution (Planned/Implemented/Simulated/Deferred).
-Views: Board by Status, Table grouped by Phase, Evidence Review filtered to Review or missing evidence.
-Create real parent/sub-issue relationships and add every issue to the Project. Only 1.1 starts Ready; remaining items start Backlog. Use one issue in progress for step-by-step learning. Do not mark the old demo's work complete in this new repo without reproducing or explicitly carrying over its evidence.
+All 40 issues are on the board with real parent/sub-issue relationships. Only 1.1 starts Ready; the other 39 items start Backlog. Use one issue in progress for step-by-step learning. Close an issue only after its acceptance criteria and evidence are verified.
+
+Optional later enhancements (not configured): Phase, Priority, Delivery, Evidence and Execution fields; a table grouped by Phase; an Evidence Review view.
 
 ## Files
 - ROADMAP.md: full parent and sub-issue content.
-- issues/: each issue body as a separate Markdown file.
 - issues.json: stable planning keys, titles, parent keys, bodies and initial status; not GitHub issue IDs.
 
 ## Milestones
@@ -54,3 +53,12 @@ Create real parent/sub-issue relationships and add every issue to the Project. O
 - Synthetic Kaggle alternative: https://www.kaggle.com/datasets/stephanmatzka/predictive-maintenance-dataset-ai4i-2020/data
 - Streamlit app creation: https://docs.snowflake.com/en/developer-guide/streamlit/app-development/creating-your-app
 - Legacy dashboard retirement: https://docs.snowflake.com/en/release-notes/bcr-bundles/un-bundled/bcr-2260
+
+## Manual continuation
+1. Open the Project and choose the Ready issue. Read its objective, acceptance criteria and dependencies.
+2. Move it to In Progress; implement the scoped change on a branch.
+3. Open a PR and attach verification evidence to the issue: commit SHA, run/attempt links, outputs or screenshots, and limitations. Never include secrets.
+4. Complete the learning review; move to Review.
+5. After acceptance is verified, close the issue and mark Done. Move the next unblocked sub-issue to Ready. Close a parent only after all children and its completion gate pass.
+
+GitHub issue numbers differ from roadmap keys: for example, roadmap 1.1 is GitHub #2. Follow the parent/sub-issue links to navigate.

@@ -1,6 +1,6 @@
 # Manufacturing Energy Analytics — Issue Roadmap
 
-Planning only: these issue bodies have not yet been published to GitHub.
+Published planning baseline: all 11 parent issues and 29 sub-issues are available in [GitHub Issues](https://github.com/Qb1005/manufacturing-energy-analytics/issues) and the [Project](https://github.com/users/Qb1005/projects/2). Implementation and evidence remain pending.
 
 Phases 1–7 deliver the dashboard MVP. Phases 8–11 complete infrastructure, ingestion, security, and portfolio capabilities. No implementation is marked complete.
 
